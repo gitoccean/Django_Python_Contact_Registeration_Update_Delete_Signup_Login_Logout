@@ -1,0 +1,13 @@
+{% extends 'base.html'%}
+{% block body %}
+
+<p> Are you sure you want to delete? "{{register.name}}"</p>
+<form action="" method="POST">
+    {% csrf_token %}
+
+
+    <a href="{% url 'home'%}">Cancel</a>
+    <input type="submit" name="confirm" value='Confirm'>
+</form>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+
+
+{% block body %}
+<div class="container">
+    <h1> Welcome to signup, so Enjoy!</h1>
+    <form action="{% url 'signup'%}"  method="post" >
+        {% csrf_token %}
+    
+        {{form.as_p}}
+        {{form.errors}}
+
+
+    <button class='btn btn-primary' type="submit" >Create</button>
+    <a href="{% url 'login'%}" >i have a account.</a>
+    </form>
+    </div>
+{% endblock %}
