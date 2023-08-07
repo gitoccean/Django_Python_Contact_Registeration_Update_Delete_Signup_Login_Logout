@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+
+
+
+
+{% block body %}
+<div class="container">
+    <h1>Home Page </h1>
+    <form action="{% url 'home'%}"  method="post" >
+    {% csrf_token %}
+    <h2>Contact Table</h2>
+    <table>
+        <tr>
+            <th>No.</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>City</th>
+            <th>Province</th>
+            <th>Country</th>
+            <th>Update</th>
+            <th>Remove</th>
+        </tr>
+        {% for x in register %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ x.name }}</td>
+                <td>{{ x.email }}</td>
+                <td>{{ x.phone}}</td>
+                <td>{{ x.city}}</td>
+                <td>{{ x.province}}</td>
+                <td>{{ x.country}}</td>
+                <td> <a class="btn btn-sm btn-info" href="{% url 'update' x.id %}">
+                    Update </a>
+                </td>
+                <td> <a class="btn btn-success" href="{% url 'delete' x.id %}">
+                    Delete </a>
+                </td>
+
+            </tr>
+        {% endfor %}
+    </table>
+    </form>
+    </div>
+
+    <div>
+        <a href="{% url "register" %}"> <button class="btn btn-primary">Add</button> </a>
+    </div><br>
+    <div>
+        <a href="{% url "login"%}"><button>Logout</button> </a>
+        </div>
+     
+{% endblock %}

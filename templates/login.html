@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block body %}
+<div class="container">
+<h2> Kindly <b>Signin</b> your account </h2>
+<form action="{% url 'login'%}"  method="post" >
+    {% csrf_token %}
+    {{form.as_p}}
+    {{form.errors}}
+
+
+
+
+    <button type="submit" >Signin</button>
+    <a href="{% url 'signup'%}" >creat a new account.</a>
+</form>
+</div>
+
+{% endblock %}
